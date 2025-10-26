@@ -23,6 +23,22 @@ $ git submodule update --remote
 `/style`以下にカスタムスタイルを追加できます。
 `/style/base`はsubmodule管理となっているので触らないでください。
 
+#### 既存のリポジトリを更新可能にする
+既存の[taiseiue/latex-devcontainer-boilerplate](https://github.com/taiseiue/latex-devcontainer-boilerplate)をこのようなsubmodule運用にするには、リポジトリルートで以下のコマンドを実行します。
+
+> [!CAUTION]
+> 何を実行しようとしているか理解してから実行してください。以下のコマンドを実行すると、.devcontainerディレクトリがリセットされます。もしあなたがdevcontainer.jsonやDockerfileに変更を加えている場合、それが消えてしまいます。
+
+```sh
+$ rm -r .devcontainer
+$ git submodule add https://github.com/taiseiue/latex-devcontainer-boilerplate.git .base-module
+$ ln -s .base-module/.devcontainer .devcontainer
+$ ln -s .base-module/style style/base
+$ sed -i '' '1a\do '\/workspace\/.base-module\/.latexmkrc' or die "Could not do '\/workspace\/.base-module\/.latexmkrc': $!";' .latexmkrc
+```
+
+mystyleも自動更新するようにする場合は、`style/mystyle.sty`を削除してください。
+
 ### License
 このボイラープレートは、[The MIT License](./LICENSE.txt)のもとで公開します。
 submoduleとして読みこんでいるリポジトリについても同様に、[The MIT License](.base-module/LICENSE.txt)となっています。
