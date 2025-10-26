@@ -34,7 +34,13 @@ $ rm -r .devcontainer
 $ git submodule add https://github.com/taiseiue/latex-devcontainer-boilerplate.git .base-module
 $ ln -s .base-module/.devcontainer .devcontainer
 $ ln -s .base-module/style style/base
-$ sed -i '' '1a\do '\/workspace\/.base-module\/.latexmkrc' or die "Could not do '\/workspace\/.base-module\/.latexmkrc': $!";' .latexmkrc
+$ ed -s .latexmkrc << EOF
+1a
+do '/workspace/.base-module/.latexmkrc' or die "Could not do '/workspace/.base-module/.latexmkrc': $!";
+.
+w
+q
+EOF
 ```
 
 mystyleも自動更新するようにする場合は、`style/mystyle.sty`を削除してください。
