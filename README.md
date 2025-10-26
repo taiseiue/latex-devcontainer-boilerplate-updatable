@@ -12,18 +12,20 @@ VS Codeで、LaTex文章の作成に必要な環境をDevContainerにまとめ�
 ### Usage
 このリポジトリ固有の使用方法のみ説明します。そもそもの使用方法は[taiseiue/latex-devcontainer-boilerplateのREADME.md](https://github.com/taiseiue/latex-devcontainer-boilerplate/blob/main/README.md)をご覧ください。
 
-#### カスタムスタイルの扱い
-`/style`はsubmodule管理となっているので、リポジトリで独自のスタイルをあてるには、`/mystyle`を使ってください。
+#### 更新
+元リポジトリの変更を受けとるには、次のコマンドを実行します。
 
-**使用例**
-
-```tex
-\documentclass[autodetect-engine,dvipdfmx,ja=standard,a4paper,12pt]{bxjsarticle}
-
-\usepackage{mystyle}
-
-\begin{document}
-\title{レポート \\
-  レポートタイトル
-}
+```sh
+$ git submodule update --remote
 ```
+
+#### カスタムスタイルの扱い
+`/style`以下にカスタムスタイルを追加できます。
+`/style/base`はsubmodule管理となっているので触らないでください。
+
+### License
+このボイラープレートは、[The MIT License](./LICENSE.txt)のもとで公開します。
+submoduleとして読みこんでいるリポジトリについても同様に、[The MIT License](.base-module/LICENSE.txt)となっています。
+
+Copyright (c) 2025 Taisei Uemura  
+Released under the [MIT license](./LICENSE.txt)
