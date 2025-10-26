@@ -1,0 +1,3 @@
+[submodule ".base-module"]
+	path = .base-module
+	url = https://github.com/taiseiue/latex-devcontainer-boilerplate.git
